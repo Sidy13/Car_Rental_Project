@@ -58,6 +58,17 @@ public class Address {
         return country;
     }
 
+    @Override
+    public String toString() {
+        return "Address{" +
+                "number=" + number +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip=" + zip +
+                ", country='" + country + '\'' +
+                '}';
+    }
 
     public static class Builder {
         public int number;
@@ -93,5 +104,6 @@ public class Address {
         public Address build() {
             return new Address(this);
         }
+
     }
 }
