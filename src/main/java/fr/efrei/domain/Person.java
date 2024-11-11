@@ -5,11 +5,11 @@ public class Person {
     protected String lastName;
     protected String email;
     protected String phone;
-    protected String address;
+    protected Address address;
     protected int age;
     protected String password;
     public Person(){};
-    public Person(String firstName, String lastName, String email, String phone, String address, int age, String password) {
+    public Person(String firstName, String lastName, String email, String phone, Address address, int age, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -48,7 +48,7 @@ public class Person {
         return phone;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
@@ -71,7 +71,7 @@ public class Person {
         protected String lastName;
         protected String email;
         protected String phone;
-        protected String address;
+        protected Address address;
         protected int age;
         protected String password;
 
@@ -105,7 +105,7 @@ public class Person {
             this.phone = phone;
             return this;
         }
-        public Builder setAddress(String address) {
+        public Builder setAddress(Address address) {
             this.address = address;
             return this;
         }
