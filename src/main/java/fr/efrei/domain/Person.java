@@ -7,14 +7,16 @@ public class Person {
     protected String phone;
     protected String address;
     protected int age;
+    protected String password;
     public Person(){};
-    public Person(String firstName, String lastName, String email, String phone, String address, int age) {
+    public Person(String firstName, String lastName, String email, String phone, String address, int age, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.address = address;
         this.age = age;
+        this.password = password;
     }
     public String getFirstName() {
         return firstName;
@@ -26,6 +28,9 @@ public class Person {
 
     public String getEmail() {
         return email;
+    }
+    public String getPassword(){
+        return password;
     }
 
     @Override
@@ -58,6 +63,7 @@ public class Person {
         this.phone = builder.phone;
         this.address = builder.address;
         this.age = builder.age;
+        this.password = password;
     }
 
     public static class Builder {
@@ -67,6 +73,7 @@ public class Person {
         protected String phone;
         protected String address;
         protected int age;
+        protected String password;
 
 
         public Builder setFirstName(String firstName) {
@@ -104,6 +111,10 @@ public class Person {
         }
         public Builder setAge(int age) {
             this.age = age;
+            return this;
+        }
+        public Builder setPassword(String password) {
+            this.password = password;
             return this;
         }
 
