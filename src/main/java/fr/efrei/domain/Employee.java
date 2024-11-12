@@ -48,6 +48,7 @@ public class Employee extends Person {
                 .build();
 
     }
+
     public static class Builder extends Person.Builder {
         private int employeeId;
         private double salary;

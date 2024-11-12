@@ -60,6 +60,7 @@ public class Customer extends Person {
                 .setAge(age)
                 .build();
     }
+
     public static class Builder extends Person.Builder {
         private int customerId;
         private boolean driverLicense;
