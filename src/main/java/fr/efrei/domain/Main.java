@@ -1,5 +1,8 @@
 package fr.efrei.domain;
 
+import fr.efrei.factory.CustomerFactory;
+import fr.efrei.factory.EmployeeFactory;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -101,7 +104,7 @@ public class Main {
                             System.out.println("Type in the name of your insurance: ");
                             String insurance = scanner.nextLine();
 
-                            Customer customer = Customer.createCustomer(firstName, lastName, email, phone, address, age, password, customerId, driverLicense, insurance);
+                            Customer customer = CustomerFactory.createCustomer(firstName, lastName, email, phone, address, age, customerId, driverLicense, insurance, password);
                             System.out.println(customer);
                             profile.addCustomer(customer);
                             break;
@@ -165,8 +168,8 @@ public class Main {
                     int maxSal = 5000;
                     int employeeId = random.nextInt(maxId - minId) + minId;
                     int salary = random.nextInt(maxSal-minSal) + minSal;
-                    Employee employee = Employee.createEmployee(firstName, lastName, email, phone, address, age, employeeId, salary, password);
-
+                    Employee employee = EmployeeFactory.createEmployee(firstName, lastName, email, phone, address, age, employeeId, salary, password);
+                    profile.addEmployee(employee);
             }
 
 
