@@ -5,7 +5,11 @@ import java.util.ArrayList;
 public class Rental {
     private int rentPeriod;
     private ArrayList<Car> cars = new ArrayList<>();
-    public Rental( int rentPeriod,  ArrayList<Car> cars) {
+
+    public Rental() {
+    }
+
+    public Rental(int rentPeriod, ArrayList<Car> cars) {
         this.rentPeriod = rentPeriod;
         this.cars = cars;
     }
