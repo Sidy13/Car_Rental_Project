@@ -3,6 +3,7 @@ package fr.efrei.domain;
 import javax.swing.text.html.Option;
 import java.util.ArrayList;
 
+
 public class Car {
     private int carId;
     private String model;
@@ -14,7 +15,12 @@ public class Car {
     private double height;
     private double kilometers;
     private String insurance;
+    private int year;
+    private double dayPrice;
     private ArrayList<String> options = new ArrayList<>();
+
+    public Car() {
+    }
 
     public double getLength() {
         return length;
@@ -60,6 +66,14 @@ public class Car {
         return licensePlate;
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public double getDayPrice() {
+        return dayPrice;
+    }
+
     public Car (Builder builder) {
         this.carId = builder.carId;
         this.model = builder.model;
@@ -71,6 +85,8 @@ public class Car {
         this.height = builder.height;
         this.kilometers = builder.kilometers;
         this.insurance = builder.insurance;
+        this.year = builder.year;
+        this.dayPrice = builder.dayPrice;
         this.options = builder.options;
     }
 
@@ -86,6 +102,7 @@ public class Car {
                 ", width=" + width +
                 ", height=" + height +
                 ", kilometers=" + kilometers +
+                ", year=" + year +
                 ", insurance='" + insurance + '\'' +
                 ", options=" + options +
                 '}';
@@ -100,6 +117,22 @@ public class Car {
         return false;
     }
 
+    public static Car createCar(int carId, String model, String brand, String color, String licensePlate, double length, double width, double height, double kilometers, int year, double dayPrice, String insurance, ArrayList<String> options) {
+        return new Car.Builder().setCarId(carId).
+                setModel(model).
+                setBrand(brand).
+                setColor(color).
+                setLicensePlate(licensePlate)
+                .setLength(length)
+                .setWidth(width)
+                .setHeight(height)
+                .setKilometers(kilometers)
+                .setInsurance(insurance)
+                .setYear(year)
+                .setDayPrice(dayPrice)
+                .setOptions(options)
+                .build();
+    }
     public static class Builder {
         private int carId;
         private String model;
@@ -111,6 +144,8 @@ public class Car {
         private double height;
         private double kilometers;
         private String insurance;
+        private int year;
+        private double dayPrice;
         private ArrayList<String> options;
         public Builder setCarId(int carId) {
             this.carId = carId;
@@ -156,6 +191,15 @@ public class Car {
             this.options = options;
             return this;
         }
+        public Builder setYear(int year) {
+            this.year = year;
+            return this;
+        }
+        public Builder setDayPrice(double dayPrice) {
+            this.dayPrice = dayPrice;
+            return this;
+        }
+
         public Car build() {
             return new Car(this);
         }

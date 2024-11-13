@@ -1,16 +1,18 @@
 package fr.efrei.domain;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        boolean connected = false;
         Profile profile = new Profile();
         Scanner scanner = new Scanner(System.in);
+        Rental rental = new Rental();
         int role = 0;
         System.out.println("Hello, type 1 if you are an client or 2 if you are an employee");
         role = scanner.nextInt();
+        boolean connected = false;
         while (!connected) {
             int choice = 0;
             switch (role) {
@@ -169,5 +171,57 @@ public class Main {
 
 
             connected = true;
-        }    }
+        }
+
+        switch (role) {
+            case 1:
+                int employeeAction = 0;
+                System.out.println("What do you want to do?");
+                System.out.println("1. Add a car to the store");
+                System.out.println("2. Remove a car of the store");
+                employeeAction = scanner.nextInt();
+                switch (employeeAction) {
+                    case 1:
+                        System.out.println("Enter the car Id :");
+                        int carId = scanner.nextInt();
+                        System.out.println("Enter the brand of the car");
+                        String brand = scanner.nextLine();
+                        System.out.println("Enter the model of the car");
+                        String model = scanner.nextLine();
+                        System.out.println("Enter the color of the car");
+                        String color = scanner.nextLine();
+                        System.out.println("Enter the license plate of the car");
+                        String licensePlate = scanner.nextLine();
+                        System.out.println("Enter the length of the car");
+                        double length = scanner.nextInt();
+                        System.out.println("Enter the width of the car");
+                        double width = scanner.nextInt();
+                        System.out.println("Enter the height of the car");
+                        double height = scanner.nextInt();
+                        System.out.println("Enter the number of kilometers of the car");
+                        double kilometers = scanner.nextInt();
+                        System.out.println("Enter the insurance of the car");
+                        String insurance = scanner.nextLine();
+                        System.out.println("Enter the year of the car");
+                        int year = scanner.nextInt();
+                        System.out.println("Enter the price of the car for a day");
+                        double dayPrice = scanner.nextInt();
+                        System.out.println("How many options do you want to add");
+                        int optionsNumber = scanner.nextInt();
+                        ArrayList<String> options = new ArrayList<>();
+                        for (int i = 0; i < optionsNumber; i++) {
+                            String option = scanner.nextLine();
+                            options.add(option);
+                        }
+                        Car car = Car.createCar(carId, model, brand, color, licensePlate, length, width, height, kilometers, year, dayPrice, insurance, options);
+                        rental.addCar(car);
+
+
+
+                }
+
+        }
+
+    }
+
 }
