@@ -35,19 +35,7 @@ public class Employee extends Person {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    public static Employee createEmployee(String firstName, String lastName, String email, String phone, Address address, int age, int employeeId, double salary, String password){
-        return  (Employee) new Builder()
-                .setEmployeeId(employeeId)
-                .setSalary(salary)
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(email)
-                .setPhone(phone)
-                .setAddress(address)
-                .setAge(age)
-                .build();
 
-    }
 
     public static class Builder extends Person.Builder {
         private int employeeId;

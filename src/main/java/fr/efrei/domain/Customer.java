@@ -47,19 +47,7 @@ public class Customer extends Person {
     }
 
 
-    public static Customer createCustomer(String firstName, String lastName, String email, String phone, Address address, int age, String password, int customerId, boolean driverLicense, String insurance) {
-        return (Customer) new Builder()
-                .setCustomerId(customerId)
-                .setDriverLicense(driverLicense)
-                .setInsurance(insurance)
-                .setFirstName(firstName)
-                .setLastName(lastName)
-                .setEmail(email)
-                .setPhone(phone)
-                .setAddress(address)
-                .setAge(age)
-                .build();
-    }
+
 
     public static class Builder extends Person.Builder {
         private int customerId;
