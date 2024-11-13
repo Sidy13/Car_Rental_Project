@@ -56,7 +56,7 @@ public class Person {
         return age;
     }
 
-    private Person(Builder builder) {
+    protected Person(Builder builder) {
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.email = builder.email;
@@ -89,17 +89,6 @@ public class Person {
             return this;
         }
 
-        @Override
-        public String toString() {
-            return "Builder{" +
-                    "firstName='" + firstName + '\'' +
-                    ", lastName='" + lastName + '\'' +
-                    ", email='" + email + '\'' +
-                    ", phone=" + phone +
-                    ", address='" + address + '\'' +
-                    ", age=" + age +
-                    '}';
-        }
 
         public Builder setPhone(String phone) {
             this.phone = phone;
