@@ -3,6 +3,7 @@ package fr.efrei.domain;
 import java.util.ArrayList;
 import java.util.Date;
 
+
 public class Rental {
     private Date rentPeriod;
     private ArrayList<Car> cars = new ArrayList<>();
