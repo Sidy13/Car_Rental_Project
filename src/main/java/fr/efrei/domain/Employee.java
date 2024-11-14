@@ -1,10 +1,10 @@
 package fr.efrei.domain;
 
 public class Employee extends Person {
-    private int employeeId;
+    private String employeeId;
     private double salary;
     public Employee() {}
-    public Employee(String firstName, String lastName, String email, String phone, Address address, int age, int employeeId, double salary, String password) {
+    public Employee(String firstName, String lastName, String email, String phone, Address address, int age, String employeeId, double salary, String password) {
         super(firstName, lastName, email, phone, address, age, password);
         this.employeeId = employeeId;
         this.salary = salary;
@@ -20,27 +20,21 @@ public class Employee extends Person {
         return "Employee{" + super.toString() + ", employeeId=" + employeeId + ", salary=" + salary + "}";
     }
 
-    public int getEmployeeId() {
+    public String getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
 
     public double getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
 
 
     public static class Builder extends Person.Builder {
-        private int employeeId;
+        private String employeeId;
         private double salary;
-        public Builder setEmployeeId(int employeeId) {
+        public Builder setEmployeeId(String employeeId) {
             this.employeeId = employeeId;
             return this;
         }

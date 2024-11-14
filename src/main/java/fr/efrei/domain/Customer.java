@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Customer extends Person {
-    private int customerId;
+    private String customerId;
     private boolean driverLicense;
     private String insurance;
 
@@ -17,7 +17,7 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String email, String phone, Address address, int age, int customerId, boolean driverLicense, String insurance, String password) {
+    public Customer(String firstName, String lastName, String email, String phone, Address address, int age, String customerId, boolean driverLicense, String insurance, String password) {
         super(firstName, lastName, email, phone, address, age, password);
         this.customerId = customerId;
         this.driverLicense = driverLicense;
@@ -32,7 +32,7 @@ public class Customer extends Person {
     }
 
 
-    public int getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
@@ -50,11 +50,11 @@ public class Customer extends Person {
 
 
     public static class Builder extends Person.Builder {
-        private int customerId;
+        private String customerId;
         private boolean driverLicense;
         private String insurance;
 
-        public Builder setCustomerId(int customerId) {
+        public Builder setCustomerId(String customerId) {
             this.customerId = customerId;
             return this;
         }
