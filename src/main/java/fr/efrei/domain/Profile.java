@@ -8,7 +8,10 @@ public class Profile extends Person{
     ArrayList<Employee> employees;
     public Profile() {
         super();
+        this.customers = new ArrayList<>();
+        this.employees = new ArrayList<>();
     }
+
 
 
     // Client part
