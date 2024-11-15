@@ -2,6 +2,7 @@ package fr.efrei.domain;
 
 import fr.efrei.factory.CustomerFactory;
 import fr.efrei.factory.EmployeeFactory;
+import fr.efrei.util.Helper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -79,10 +80,8 @@ public class Main {
                             System.out.println("Create a password: ");
                             String password = scanner.nextLine();
 
-                            Random random = new Random();
-                            int min = 10000;
-                            int max = 100000;
-                            int customerId = random.nextInt(max - min) + min;
+
+                            String customerId = Helper.generateId();
 
                             System.out.println("Type 1 if you have a driver license or 2 if you don't?");
                             int driverChoice = scanner.nextInt();
@@ -159,12 +158,10 @@ public class Main {
                     String employeePassword = scanner.nextLine();
 
                     Random randomEmployee = new Random();
-                    int minId = 100;
-                    int maxId = 1000;
                     int minSal = 2000;
                     int maxSal = 5000;
-                    int employeeId = randomEmployee.nextInt(maxId - minId) + minId;
                     int salary = randomEmployee.nextInt(maxSal - minSal) + minSal;
+                    String employeeId = Helper.generateId();
                     Employee employee = EmployeeFactory.createEmployee(employeeFirstName, employeeLastName, employeeEmail, employeePhone, employeeAddress, employeeAge, employeeId, salary, employeePassword);
                     profile.addEmployee(employee);
                     connected = true;
@@ -188,6 +185,19 @@ public class Main {
                 case 1:
                     int clientAction;
                     System.out.println("What do you want to do?");
+                    System.out.println("1. Search a car");
+                    clientAction = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (clientAction) {
+                        case 1:
+                            System.out.println("Enter the brand of the car: ");
+                            String carBrand = scanner.nextLine();
+                            System.out.println("Enter the model of the car: ");
+                            String carModel = scanner.nextLine();
+                            rental.seeCarByBrandAndModel(carBrand, carModel);
+
+
+                    }
                     break;
                 case 2:
                     int employeeAction;
@@ -266,7 +276,7 @@ public class Main {
                             System.out.println("Enter the car Id to see: ");
                             int seeCarId = scanner.nextInt();
                             scanner.nextLine();
-                            rental.seeCar(seeCarId);
+                            rental.seeCarById(seeCarId);
                             break;
                         default:
                             System.out.println("Invalid choice. Please type 1, 2 or 3.");

@@ -12,14 +12,14 @@ public class CustomerFactory {
         }
         return (Customer) new Customer.Builder().setFirstName(firstName).setLastName(lastName).build();
     }
-    public static Customer createCustomer(String firstName, String lastName, String email, String phone, Address address, int age, int customerId, boolean driverLicense, String insurance, String password) {
-        if (Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(phone) || Helper.isNullOrEmpty(password) || Helper.isNullOrEmpty(password)) {
+    public static Customer createCustomer(String firstName, String lastName, String email, String phone, Address address, int age, String customerId, boolean driverLicense, String insurance, String password) {
+        if (Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(phone) || Helper.isNullOrEmpty(customerId) || Helper.isNullOrEmpty(password)) {
             return null;
         }
         if (Helper.isNullOrEmpty(address)) {
             return null;
         }
-        if (age < 18 || customerId <= 0) {
+        if (age < 18) {
             return null;
         }
         return (Customer) new Customer.Builder()

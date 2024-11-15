@@ -11,14 +11,14 @@ public class EmployeeFactory {
         }
         return (Employee) new Employee.Builder().setFirstName(firstName).setLastName(lastName).build();
     }
-    public static Employee createEmployee(String firstName, String lastName, String email, String phone, Address address, int age, int employeeId, double salary, String password) {
-        if(Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(phone) || Helper.isNullOrEmpty(password)) {
+    public static Employee createEmployee(String firstName, String lastName, String email, String phone, Address address, int age, String employeeId, double salary, String password) {
+        if(Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName) || Helper.isNullOrEmpty(email) || Helper.isNullOrEmpty(phone) || Helper.isNullOrEmpty(employeeId) || Helper.isNullOrEmpty(password)) {
             return null;
         }
         if(Helper.isNullOrEmpty(address)) {
             return null;
         }
-        if (age<=18 || employeeId<=0 || salary<=0) {
+        if (age<=18 || salary<=0) {
             return null;
         }
         return  (Employee) new Employee.Builder()
