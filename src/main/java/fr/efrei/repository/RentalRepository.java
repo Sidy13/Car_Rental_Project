@@ -29,7 +29,7 @@ public class RentalRepository implements IRentalRepository {
     }
 
     @Override
-    public Rental read(Integer id) {
+    public Rental read(String id) {
         for (Rental rental : rentalList) {
             // Assumes Rental has a unique ID attribute like rentalId
             if (rental.getRentPeriod() == id) {
@@ -41,7 +41,7 @@ public class RentalRepository implements IRentalRepository {
 
     @Override
     public Rental update(Rental rental) {
-        Integer id = rental.getRentPeriod();
+        String id = rental.getRentPeriod();
         Rental existingRental = read(id);
         if (existingRental == null) {
             return null;
@@ -55,7 +55,7 @@ public class RentalRepository implements IRentalRepository {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(String id) {
         Rental rentalToDelete = read(id);
         if (rentalToDelete == null) {
             return false;

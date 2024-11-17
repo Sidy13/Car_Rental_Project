@@ -3,6 +3,7 @@ package fr.efrei.repository;
 import fr.efrei.domain.Customer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CustomerRepository implements ICustomerRepository {
     private static ICustomerRepository repository = null;
@@ -29,9 +30,9 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public Customer read(Integer id) {
+    public Customer read(String id) {
         for (Customer customer : customerList) {
-            if (customer.getCustomerId() == id) {
+            if (Objects.equals(customer.getCustomerId(), id)) {
                 return customer;
             }
         }
@@ -40,7 +41,7 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public Customer update(Customer customer) {
-        Integer id = customer.getCustomerId();
+        String id = customer.getCustomerId();
         Customer existingCustomer = read(id);
         if (existingCustomer == null) {
             return null;
@@ -54,7 +55,7 @@ public class CustomerRepository implements ICustomerRepository {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(String id) {
         Customer customerToDelete = read(id);
         if (customerToDelete == null) {
             return false;

@@ -22,6 +22,7 @@ public class CustomerFactory {
         if (age < 18) {
             return null;
         }
+
         return (Customer) new Customer.Builder()
                 .setCustomerId(customerId)
                 .setFirstName(firstName)
