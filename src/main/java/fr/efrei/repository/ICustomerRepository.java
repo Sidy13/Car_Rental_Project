@@ -8,3 +8,4 @@ public interface ICustomerRepository extends IRepository<Customer, String> {
 
     List<Customer> getAll();
 }
+

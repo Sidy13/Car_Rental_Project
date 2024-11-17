@@ -4,6 +4,7 @@ import fr.efrei.domain.Rental;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class RentalRepository implements IRentalRepository {
     private static IRentalRepository repository = null;
     private List<Rental> rentalList;

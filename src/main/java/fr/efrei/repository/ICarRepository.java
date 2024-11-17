@@ -6,3 +6,4 @@ import java.util.List;
 public interface ICarRepository extends IRepository<Car, Integer> {
     List<Car> getAll();
 }
+

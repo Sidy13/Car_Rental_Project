@@ -6,3 +6,4 @@ import java.util.List;
 public interface IRentalRepository extends IRepository<Rental, String> {
     List<Rental> getAll();
 }
+

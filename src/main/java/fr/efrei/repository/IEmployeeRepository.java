@@ -6,3 +6,4 @@ import java.util.List;
 public interface IEmployeeRepository extends IRepository<Employee, String> {
     List<Employee> getAll();
 }
+
