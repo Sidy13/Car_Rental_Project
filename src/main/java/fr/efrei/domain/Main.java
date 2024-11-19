@@ -1,5 +1,6 @@
 package fr.efrei.domain;
 
+import fr.efrei.factory.CarFactory;
 import fr.efrei.factory.CustomerFactory;
 import fr.efrei.factory.EmployeeFactory;
 import fr.efrei.util.Helper;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class Main{
     public static void main(String[] args) {
         Profile profile = new Profile();
         Scanner scanner = new Scanner(System.in);
@@ -197,6 +198,7 @@ public class Main {
                             rental.seeCarByBrandAndModel(carBrand, carModel);
 
 
+
                     }
                     break;
                 case 2:
@@ -262,7 +264,7 @@ public class Main {
                                 String option = scanner.nextLine();
                                 options.add(option);
                             }
-                            Car car = Car.createCar(carId, model, brand, color, licensePlate, length, width, height, kilometers, year, dayPrice, carInsurance, options);
+                            Car car = CarFactory.createCar(carId, model, brand, color, licensePlate, length, width, height, kilometers, year, dayPrice, carInsurance, options);
                             rental.addCar(car);
                             System.out.println(car);
                             break;
@@ -289,6 +291,7 @@ public class Main {
             }
         }
 
-        scanner.close(); // Close the scanner
+
+        scanner.close();
     }
 }

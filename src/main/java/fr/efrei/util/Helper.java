@@ -14,6 +14,9 @@ public class Helper {
     public static boolean isNullOrEmpty(Address address) {
         return address == null;
     }
+    public static boolean isNullOrEmpty(Object o) {
+        return o == null;
+    }
     public static String generateId(){
         return UUID.randomUUID().toString();
     }
@@ -36,6 +39,6 @@ public class Helper {
         String visaRegex = "^4[0-9]{12}(?:[0-9]{3})?$";
         String visaMasterCardRegex = "^^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$";
         String cardNumber = card.getNumber();
-        return Pattern.matches(mastercardRegex, cardNumber) || Pattern.matches(visaRegex, cardNumber) || Pattern.matches(visaMasterCardRegex, cardNumber);
+        return Pattern.matches(mastercardRegex, cardNumber) || Pattern.matches(visaRegex, cardNumber) || Pattern.matches(visaMasterCardRegex, cardNumber) && card.getCvv().length()==3;
     }
 }
