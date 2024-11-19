@@ -10,8 +10,6 @@ public class BankingCard {
         this.cvv = cvv;
     }
 
-
-
     public String getNumber() {
         return number;
     }
