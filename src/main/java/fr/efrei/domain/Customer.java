@@ -1,5 +1,7 @@
 package fr.efrei.domain;
 
+import fr.efrei.util.Helper;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -44,6 +46,18 @@ public class Customer extends Person {
 
     public String getInsurance() {
         return insurance;
+    }
+
+    public boolean pay(){
+        System.out.println("Enter the card number");
+        Scanner scanner = new Scanner(System.in);
+        String cardNumber = scanner.next();
+        System.out.println("Enter the expiration date");
+        String expirationDate = scanner.next();
+        System.out.println("Enter the CVV");
+        String cvv = scanner.next();
+        BankingCard card = new BankingCard(cardNumber,expirationDate, cvv);
+        return Helper.isValidCard(card);
     }
 
 

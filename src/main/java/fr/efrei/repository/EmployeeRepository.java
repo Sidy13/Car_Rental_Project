@@ -3,6 +3,7 @@ package fr.efrei.repository;
 import fr.efrei.domain.Employee;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EmployeeRepository implements IEmployeeRepository {
     private static IEmployeeRepository repository = null;
@@ -29,9 +30,9 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public Employee read(Integer id) {
+    public Employee read(String id) {
         for (Employee employee : employeeList) {
-            if (employee.getEmployeeId() == id) {
+            if (Objects.equals(employee.getEmployeeId(), id)) {
                 return employee;
             }
         }
@@ -40,7 +41,7 @@ public class EmployeeRepository implements IEmployeeRepository {
 
     @Override
     public Employee update(Employee employee) {
-        Integer id = employee.getEmployeeId();
+        String id = employee.getEmployeeId();
         Employee existingEmployee = read(id);
         if (existingEmployee == null) {
             return null;
@@ -53,8 +54,9 @@ public class EmployeeRepository implements IEmployeeRepository {
         return null;
     }
 
+
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(String id) {
         Employee employeeToDelete = read(id);
         if (employeeToDelete == null) {
             return false;

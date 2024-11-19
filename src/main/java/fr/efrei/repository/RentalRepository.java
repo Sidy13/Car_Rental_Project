@@ -4,6 +4,7 @@ import fr.efrei.domain.Rental;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class RentalRepository implements IRentalRepository {
     private static IRentalRepository repository = null;
     private List<Rental> rentalList;
@@ -29,10 +30,12 @@ public class RentalRepository implements IRentalRepository {
     }
 
     @Override
-    public Rental read(Integer id) {
+    public Rental read(String id) {
+        int rentPeriod;
         for (Rental rental : rentalList) {
+            rentPeriod = rental.getRentPeriod();
             // Assumes Rental has a unique ID attribute like rentalId
-            if (rental.getRentPeriod() == id) {
+            if (String.valueOf(rentPeriod).equals(id)) {
                 return rental;
             }
         }
@@ -41,7 +44,8 @@ public class RentalRepository implements IRentalRepository {
 
     @Override
     public Rental update(Rental rental) {
-        Integer id = rental.getRentPeriod();
+        int rentPeriod = rental.getRentPeriod();
+        String id = String.valueOf(rentPeriod);
         Rental existingRental = read(id);
         if (existingRental == null) {
             return null;
@@ -55,7 +59,7 @@ public class RentalRepository implements IRentalRepository {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(String id) {
         Rental rentalToDelete = read(id);
         if (rentalToDelete == null) {
             return false;

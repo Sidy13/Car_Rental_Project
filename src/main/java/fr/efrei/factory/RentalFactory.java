@@ -19,6 +19,6 @@ public class RentalFactory {
             return null;
         }
         int rentPeriod = (int) java.time.temporal.ChronoUnit.DAYS.between(startDate, endDate);
-        return new Rental(rentPeriod, cars, startDate, endDate); // A REVOIR
+        return new Rental(rentPeriod, cars, startDate, endDate);
     }
 }
