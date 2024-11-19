@@ -3,6 +3,10 @@ package fr.efrei.domain;
 import fr.efrei.factory.CarFactory;
 import fr.efrei.factory.CustomerFactory;
 import fr.efrei.factory.EmployeeFactory;
+import fr.efrei.repository.CarRepository;
+import fr.efrei.repository.CustomerRepository;
+import fr.efrei.repository.EmployeeRepository;
+import fr.efrei.repository.RentalRepository;
 import fr.efrei.util.Helper;
 
 import java.util.ArrayList;
@@ -14,6 +18,10 @@ public class Main{
         Profile profile = new Profile();
         Scanner scanner = new Scanner(System.in);
         Rental rental = new Rental();
+        CarRepository carRepository = (CarRepository) CarRepository.getRepository();
+        CustomerRepository customerRepository = (CustomerRepository) CustomerRepository.getRepository();
+        EmployeeRepository employeeRepository = (EmployeeRepository) EmployeeRepository.getRepository();
+        RentalRepository rentalRepository = (RentalRepository) RentalRepository.getRepository();
         System.out.println("Hello, type 1 if you are a client or 2 if you are an employee");
         int role = scanner.nextInt();
         scanner.nextLine();
@@ -94,6 +102,7 @@ public class Main{
 
                             Customer customer = CustomerFactory.createCustomer(firstName, lastName, email, phone, address, age, customerId, driverLicense, insurance, password);
                             profile.addCustomer(customer);
+                            customerRepository.create(customer);
                             connected = true;
                             // The condition below doesn't work we need to understand why
 //                            if (customer != null) {
@@ -165,6 +174,7 @@ public class Main{
                     String employeeId = Helper.generateId();
                     Employee employee = EmployeeFactory.createEmployee(employeeFirstName, employeeLastName, employeeEmail, employeePhone, employeeAddress, employeeAge, employeeId, salary, employeePassword);
                     profile.addEmployee(employee);
+                    employeeRepository.create(employee);
                     connected = true;
                     // The condition below doesn't work we need to understand why
 //                    if (employee != null) {
@@ -266,6 +276,7 @@ public class Main{
                             }
                             Car car = CarFactory.createCar(carId, model, brand, color, licensePlate, length, width, height, kilometers, year, dayPrice, carInsurance, options);
                             rental.addCar(car);
+                            carRepository.create(car);
                             System.out.println(car);
                             break;
                         case 2:
@@ -273,12 +284,14 @@ public class Main{
                             int removeCarId = scanner.nextInt();
                             scanner.nextLine();
                             rental.removeCar(removeCarId);
+                            carRepository.delete(removeCarId);
                             break;
                         case 3:
                             System.out.println("Enter the car Id to see: ");
                             int seeCarId = scanner.nextInt();
                             scanner.nextLine();
                             rental.seeCarById(seeCarId);
+                            carRepository.read(seeCarId);
                             break;
                         default:
                             System.out.println("Invalid choice. Please type 1, 2 or 3.");
