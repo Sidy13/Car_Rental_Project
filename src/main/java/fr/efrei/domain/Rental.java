@@ -1,22 +1,24 @@
 package fr.efrei.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public class Rental {
-    private int rentPeriod;
+    private Date rentPeriod;
     private ArrayList<Car> cars = new ArrayList<>();
-    public Rental( int rentPeriod,  ArrayList<Car> cars) {
+    public Rental( Date rentPeriod,  ArrayList<Car> cars) {
         this.rentPeriod = rentPeriod;
         this.cars = cars;
     }
 
 
 
-    public int getRentPeriod() {
+    public Date getRentPeriod() {
         return rentPeriod;
     }
 
-    public void setRentPeriod(int rentPeriod) {
+    public void setRentPeriod(Date rentPeriod) {
         this.rentPeriod = rentPeriod;
     }
 

@@ -22,6 +22,9 @@ public class CustomerFactory {
         if (age < 18 || customerId <= 0) {
             return null;
         }
+        if (!Helper.isValidEmail(email) || !Helper.isValidPhone(phone)) {
+            return null;
+        }
         return (Customer) new Customer.Builder()
                 .setCustomerId(customerId)
                 .setFirstName(firstName)
