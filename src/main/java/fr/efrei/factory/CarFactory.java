@@ -12,7 +12,7 @@ public class CarFactory {
         if (Helper.isNullOrEmpty(model) || Helper.isNullOrEmpty(brand) || Helper.isNullOrEmpty(color) || Helper.isNullOrEmpty(licensePlate) || Helper.isNullOrEmpty(insurance)) {
             return null;
         }
-        if (carId <= 0 || length <= 0 || width <= 0 || height <= 0 || kilometers < 0 || dayPrice < 0  || options.isEmpty() || year<2015) {
+        if (carId <= 0 || length <= 0 || width <= 0 || height <= 0 || kilometers < 0 || dayPrice < 0  || year<1900) {
             return null;
         }
         return new Car.Builder().setCarId(carId).
