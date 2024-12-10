@@ -23,7 +23,7 @@ public class Employee extends Person {
     }
     @Override
     public String toString() {
-        return "Employee{" + super.toString() + ", employeeId=" + employeeId + ", salary=" + salary + "}";
+        return "Employee{" + super.toString() + ", employeeId=" + employeeId + ", salary=" + salary + "€}";
     }
 
     public String getEmployeeId() {
@@ -39,11 +39,9 @@ public class Employee extends Person {
         List<Employee> employees = employeeRepository.getAll();
         for (Employee employee : employees) {
             if (employee.getEmail().equals(email) && employee.getPassword().equals(password)) {
-                System.out.println("Login successful for: " + email);
                 return employee;
             }
         }
-        System.out.println("Incorrect email or password");
         return null;
     }
 

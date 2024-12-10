@@ -63,7 +63,7 @@ public class Person {
         this.phone = builder.phone;
         this.address = builder.address;
         this.age = builder.age;
-        this.password = password;
+        this.password = builder.password;
     }
 
     public static class Builder {

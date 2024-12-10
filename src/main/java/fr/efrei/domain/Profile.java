@@ -1,6 +1,7 @@
 package fr.efrei.domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Profile extends Person{
@@ -76,5 +77,34 @@ public class Profile extends Person{
         }
         System.out.println("Email or password incorrect, please try again");
         return false;
+    }
+
+    public String seeEmployee(String employeeId) {
+        for (Employee e : employees) {
+            if(e.getEmployeeId().equals(employeeId)) {
+                return e.toString();
+            }
+        }
+        return "No employee found with the id :" + employeeId;
+    }
+
+    public void seeAllEmployees() {
+        for (Employee e : employees) {
+            System.out.println(e);
+        }
+    }
+
+    public String seeCustomer(String passportNumber) {
+        for (Customer c : customers) {
+            if(c.getPassportNumber().equals(passportNumber)) {
+                return c.toString();
+            }
+        }
+        return "No customer found with the id :" + passportNumber;
+    }
+    public void seeAllCustomers() {
+        for (Customer c : customers) {
+            System.out.println(c);
+        }
     }
 }

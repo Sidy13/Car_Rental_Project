@@ -3,32 +3,36 @@ package fr.efrei.domain;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Objects;
 
 public class Rental {
-    private int rentPeriod;
-    private ArrayList<Car> cars = new ArrayList<>();
+    private long rentPeriod;
+    private List<Car> cars = new ArrayList<>();
     private LocalDate startDate;
     private LocalDate endDate;
+    String pickUpLocation;
 
-    public Rental(int rentPeriod, ArrayList<Car> cars, LocalDate startDate, LocalDate endDate) {
+    public Rental(long rentPeriod, List<Car> cars, LocalDate startDate, LocalDate endDate, String pickUpLocation) {
         this.rentPeriod = rentPeriod;
         this.cars = cars;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.pickUpLocation = pickUpLocation;
     }
 
 
     public Rental() {
     }
 
-    public Rental(int rentPeriod, ArrayList<Car> cars) {
+    public Rental(int rentPeriod, List<Car> cars) {
         this.rentPeriod = rentPeriod;
         this.cars = cars;
     }
 
 
 
-    public int getRentPeriod() {
+    public long getRentPeriod() {
         return rentPeriod;
     }
 
@@ -40,13 +44,12 @@ public class Rental {
     public String toString() {
         return "Rental{" +
                 "rentPeriod=" + rentPeriod +
-                ", cars=" + cars +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+                "days, cars=" + cars +
+                ", pick up location='" + pickUpLocation + '\'' +
                 '}';
     }
 
-    public ArrayList<Car> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
@@ -70,32 +73,48 @@ public class Rental {
         this.endDate = endDate;
     }
 
+    public void setRentPeriod(long rentPeriod) {
+        this.rentPeriod = rentPeriod;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public String getPickUpLocation() {
+        return pickUpLocation;
+    }
+
+    public void setPickUpLocation(String pickUpLocation) {
+        this.pickUpLocation = pickUpLocation;
+    }
+
     public void addCar(Car car) {
         cars.add(car);
     }
-    public void removeCar(int carId) {
-        Iterator<Car> iterator = cars.iterator();
-        boolean carFound = false;
-
-        while (iterator.hasNext()) {
-            Car car = iterator.next();
-            if (car.getCarId() == carId) {
-                iterator.remove();
-                carFound = true;
+    public void removeCar(String carId) {
+        Car removedCar = null;
+        for (Car car : cars) {
+            if (car != null && Objects.equals(car.getCarId(), carId)) {
+                cars.remove(car);
+                removedCar = car;
                 System.out.println("Car with ID " + carId + " has been removed.");
                 break;
             }
         }
 
-        if (!carFound) {
+        if (removedCar == null) {
             System.out.println("No car with ID " + carId + " found in the store.");
         }
     }
-    public void seeCarById(int carId) {
+
+
+
+    public void seeCarById(String carId) {
         Iterator<Car> iterator = cars.iterator();
         while (iterator.hasNext()) {
             Car car = iterator.next();
-            if (car.getCarId() == carId) {
+            if (Objects.equals(car.getCarId(), carId)) {
                 iterator.remove();
                 System.out.println(car);
                 break;
@@ -120,7 +139,7 @@ public class Rental {
         }
     }
 
-    public void rentACar(Car car, Customer customer, LocalDate startDate, LocalDate endDate) {
+    public void rentACar(Car car, Customer customer, LocalDate startDate, LocalDate endDate, long rentPeriod, String pickUpLocation) {
         if (car.isAvailable(startDate, endDate)) {
             if (customer.pay()){
                 car.setRented(true);
@@ -128,12 +147,17 @@ public class Rental {
                 car.setStartDate(startDate);
                 car.setEndDate(endDate);
                 addCar(car);
-                System.out.println("Car with ID " + car.getCarId() + " has been rented to " + customer.getFirstName() +" "+ customer.getLastName() + " from " + startDate + " to " + endDate);
+                this.startDate = startDate;
+                this.endDate = endDate;
+                this.rentPeriod = rentPeriod;
+                this.pickUpLocation = pickUpLocation;
+                System.out.println("The " + car.getBrand()+ " "+ car.getModel()+ " car with ID " + car.getCarId() + " has been rented to " + customer.getFirstName() +" "+ customer.getLastName() + " from " + startDate + " to " + endDate + ", which represents a rent period of " + rentPeriod + " days and must be picked in "+pickUpLocation+ "\n");
+
             }
         } else {
             System.out.println("Car with ID " + car.getCarId() + " is not available for the given period.");
         }
     }
 
-}
 
+}
