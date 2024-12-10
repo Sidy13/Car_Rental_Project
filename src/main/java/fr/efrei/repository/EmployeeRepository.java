@@ -36,6 +36,9 @@ public class EmployeeRepository implements IEmployeeRepository {
                 return employee;
             }
         }
+        // Doing the same thing with Lambda expressions
+        /*Employee employee = employeeList.stream().filter(e -> e.getEmployeeId().equals(id)).findAny().orElse(null);
+        return employee;*/
         return null;
     }
 

@@ -151,8 +151,8 @@ public class Rental {
                 this.endDate = endDate;
                 this.rentPeriod = rentPeriod;
                 this.pickUpLocation = pickUpLocation;
-                System.out.println("The " + car.getBrand()+ " "+ car.getModel()+ " car with ID " + car.getCarId() + " has been rented to " + customer.getFirstName() +" "+ customer.getLastName() + " from " + startDate + " to " + endDate + ", which represents a rent period of " + rentPeriod + " days and must be picked in "+pickUpLocation+ "\n");
-
+                double totalPrice = rentPeriod * car.getDayPrice();
+                System.out.println("The " + car.getBrand()+ " "+ car.getModel()+ " car with ID " + car.getCarId() + " has been rented to " + customer.getFirstName() +" "+ customer.getLastName() + " from " + startDate + " to " + endDate + ", which represents a rent period of " + rentPeriod + " days and a total of " +totalPrice+ " euros and must be picked in "+pickUpLocation+ "\n");
             }
         } else {
             System.out.println("Car with ID " + car.getCarId() + " is not available for the given period.");

@@ -32,7 +32,7 @@ public class CustomerRepository implements ICustomerRepository {
     @Override
     public Customer read(String id) {
         for (Customer customer : customerList) {
-            if (Objects.equals(customer.getCustomerId(), id)) {
+            if (Objects.equals(customer.getPassportNumber(), id)) {
                 return customer;
             }
         }
@@ -42,7 +42,7 @@ public class CustomerRepository implements ICustomerRepository {
 
     @Override
     public Customer update(Customer customer) {
-        String id = customer.getCustomerId();
+        String id = customer.getPassportNumber();
         Customer existingCustomer = read(id);
         if (existingCustomer == null) {
             return null;

@@ -3,6 +3,7 @@ package fr.efrei.repository;
 import fr.efrei.domain.Car;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CarRepository implements ICarRepository {
     private static ICarRepository repository = null;
@@ -30,9 +31,9 @@ public class CarRepository implements ICarRepository {
     }
 
     @Override
-    public Car read(Integer id) {
+    public Car read(String id) {
         for (Car car : carList) {
-            if (car.getCarId() == id) {
+            if (Objects.equals(car.getCarId(), id)) {
                 return car;
             }
         }
@@ -41,7 +42,7 @@ public class CarRepository implements ICarRepository {
 
     @Override
     public Car update(Car car) {
-        Integer id = car.getCarId();
+        String id = car.getCarId();
         Car existingCar = read(id);
         if (existingCar == null) {
             return null;
@@ -55,7 +56,7 @@ public class CarRepository implements ICarRepository {
     }
 
     @Override
-    public boolean delete(Integer id) {
+    public boolean delete(String id) {
         Car carToDelete = read(id);
         if (carToDelete == null) {
             return false;
